@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 $sessionid = $_SESSION["recruiter"];
 
-$fetch_query = "SELECT * FROM `resouorce`";
+$fetch_query = "SELECT * FROM `resources`";
 
 $result = mysqli_query($con,$fetch_query);
 
@@ -119,12 +119,13 @@ if(isset($_REQUEST["visit"]))
         </div>
     </aside>
     <main class="herotabs">
-       <div class="fff-top-bar">
-        <div class="search-wrapper">
-            <form>
-                <input type="text" />
+    <div class="fff-top-bar">
+       <div class="search-wrapper">
+
+       <form method="POST" action="">
+                <input type="text" name="search" />
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
+                </form>
         </div>
             <div class="top-bar">
                 <i class="fa-solid fa-bell"></i>
@@ -132,6 +133,23 @@ if(isset($_REQUEST["visit"]))
             </div>
         
        </div>
+       <?php
+
+        $search = $_POST['search'] ?? '';
+
+        $query = "SELECT * FROM `resources` WHERE `name` LIKE '%$search%' OR `skills` LIKE '%$search%' OR `current company` LIKE '%$search%'
+        OR `current ctc` LIKE '%$search%' OR  `rate per-hour` LIKE '%$search%'
+        ORDER BY `rate per-hour` ASC, `work experience` ASC
+        ";
+
+        $result = mysqli_query($con,$query);
+        if($result->num_rows>0){
+            
+        }else{
+            echo"No Record Found";
+        }
+        ?>
+
        <div class="user-table">
             <div class="buttons-wrapper">
                 <span>Resources</span>
@@ -155,7 +173,7 @@ if(isset($_REQUEST["visit"]))
                             <td><?php echo $data["name"]; ?>
                             <input type="hidden" value="<?php echo $data["id"]; ?>" name="id"></td>
                             <td class="skill-tab"><?php echo $data["skills"]; ?></td>
-                            <td><?php echo $data["hourlyRate"]; ?></td>
+                            <td><?php echo $data["rate per-hour"]; ?></td>
                             <td>
                                 <a href="<?php echo 'resource-profile.php?id='.$data['id']; ?>" class="visit_button" name="visit">
                                     Visit&nbsp;Profile

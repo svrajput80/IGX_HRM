@@ -6,11 +6,15 @@ session_start();
 if($_REQUEST["rateph"]!="")
 {
 	$tmprate =$_REQUEST["rateph"];
-	 if($tmprate == "50-100")	$rate = "`rate per-hour` like '50' or `rate per-hour` like '60' or `rate per-hour` like '70' or `rate per-hour` like '80' or `rate per-hour` like '90' ";
-	else if($tmprate == "100-150")	$rate = "`rate per-hour` like '100' or `rate per-hour` like '110' or `rate per-hour` like '120' or `rate per-hour` like '130' or `rate per-hour` like '140' ";
-	else if($tmprate == "150-200")	$rate = "`rate per-hour` like '150' or `rate per-hour` like '160' or `rate per-hour` like '170' or `rate per-hour` like '180' or `rate per-hour` like '190' ";
-    else if($tmprate == "200-250")	$rate = "`rate per-hour` like '200' or `rate per-hour` like '210' or `rate per-hour` like '220' or `rate per-hour` like '230' or `rate per-hour` like '240'  or `rate per-hour` like '250'";
-    
+	 if($tmprate == "Less than 100")	$rate = "`rate per-hour` < 100";
+     	else if($tmprate == "100-150")	$rate = "`rate per-hour`BETWEEN 100 AND 150 ";
+	else if($tmprate == "150-200")	$rate = "`rate per-hour`BETWEEN 150 AND 200 ";
+    else if($tmprate == "200-250")	$rate = "`rate per-hour`BETWEEN 200 AND 250 ";
+    else if($tmprate == "250-300")	$rate = "`rate per-hour`BETWEEN 250 AND 300 ";
+    else if($tmprate == "300-350")	$rate = "`rate per-hour` BETWEEN 300 AND 350";
+    else if($tmprate == "350-400")	$rate = "`rate per-hour` BETWEEN 350 AND 400";
+    else if($tmprate == "More than 400")	$rate = "`rate per-hour` > 400";
+
 }
 else $rate="`rate per-hour` like '%'";
 

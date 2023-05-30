@@ -188,10 +188,16 @@
         </label>
         <select name="rateph" class="resource-select">
             <option value="">select</option>
-            <option value="50-100">50-100</option>
+            <option value="Less than 100">Less than 100</option>
             <option value="100-150">100-150</option>
             <option value="150-200">150-200</option>
             <option value="200-250">200-250</option>
+            <option value="250-300">250-300</option>
+            <option value="300-350">300-350</option>
+            <option value="350-400">350-400</option>
+            <option value="More than 400">More than 400</option>
+
+
 
 
             

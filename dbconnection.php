@@ -1,8 +1,8 @@
 <?php
-$host_name = '103.38.50.104';
-$host_user = 'developer';
-$host_pass = 'Inf0g$nx@123456';
-$host_db = "HR";
+$host_name = 'localhost';
+$host_user = 'root';
+$host_pass = '';
+$host_db = "hrapp";
 
 
 
